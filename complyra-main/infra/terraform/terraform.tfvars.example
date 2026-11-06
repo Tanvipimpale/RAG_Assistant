@@ -1,0 +1,57 @@
+project_name         = "complyra"
+aws_region           = "ap-southeast-1"
+vpc_cidr             = "10.40.0.0/16"
+availability_zones   = ["ap-southeast-1a", "ap-southeast-1b"]
+public_subnet_cidrs  = ["10.40.1.0/24", "10.40.2.0/24"]
+
+# Networking / Load balancing
+acm_certificate_arn = ""
+
+# Image source
+ecr_registry = ""
+image_tag    = "latest"
+
+# Database
+db_name               = "complyra"
+db_username           = "app"
+db_password           = "replace-with-strong-password"
+db_instance_class     = "db.t3.micro"
+db_engine_version     = "16.6"
+db_multi_az           = false
+db_allocated_storage  = 20
+db_max_allocated_storage = 50
+db_deletion_protection   = false
+db_skip_final_snapshot   = true
+db_apply_immediately     = true
+db_performance_insights_enabled = false
+
+# App runtime — Gemini
+app_env                    = "prod"
+app_llm_provider           = "gemini"
+app_embedding_provider     = "gemini"
+app_gemini_api_key         = "replace-with-your-gemini-api-key"
+app_gemini_chat_model      = "gemini-2.5-flash"
+app_gemini_embedding_model = "gemini-embedding-001"
+app_embedding_dimension    = 768
+app_cors_origins           = "[\"*\"]"
+app_trusted_hosts          = "[\"*\"]"
+app_qdrant_url             = "http://qdrant.internal:6333"
+app_require_approval       = true
+
+# Optional secrets
+jwt_secret_value = ""
+app_sentry_dsn   = ""
+
+# ECS service sizes (cost-optimized for demo)
+api_desired_count    = 1
+worker_desired_count = 1
+web_desired_count    = 0
+api_task_cpu         = 256
+api_task_memory      = 512
+worker_task_cpu      = 256
+worker_task_memory   = 512
+web_task_cpu         = 256
+web_task_memory      = 512
+
+# CloudWatch Synthetics
+enable_synthetics = false
